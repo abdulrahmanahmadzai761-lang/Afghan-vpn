@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html lang="ps" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AFGHAN VPN</title>
+<style>
+*{box-sizing:border-box}
+body{
+margin:0;background:#061426;color:white;
+font-family:Arial,sans-serif;
+text-align:center;padding:20px;
+}
+.app{
+max-width:430px;margin:15px auto;
+background:#0d2945;padding:25px;
+border:1px solid #17496d;
+border-radius:25px;
+min-height:650px;
+}
+h1{color:#13caff;font-size:30px}
+.logo{font-size:65px;margin:20px}
+.status{color:#a9c9df;margin:20px}
+button,select{
+cursor:pointer;
+}
+.connect{
+width:155px;height:155px;
+border-radius:50%;border:5px solid #00caff;
+background:#073b5e;color:white;
+font-size:23px;font-weight:bold;
+margin:20px;
+}
+.connect:active{background:#087a9e}
+select{
+width:95%;padding:15px;
+border-radius:12px;
+background:#123c5d;color:white;
+font-size:16px;margin:15px 0;
+}
+.top{
+display:flex;justify-content:space-between;
+align-items:center;
+}
+.lang{
+background:#087da7;color:white;
+border:0;padding:10px 15px;
+border-radius:10px;
+}
+.menu{
+display:flex;justify-content:space-around;
+margin-top:35px;
+border-top:1px solid #31516c;
+padding-top:20px;
+}
+.menu button{
+background:none;color:#b9e8ff;
+border:0;font-size:14px;
+}
+.info{color:#82a9c8;margin-top:35px}
+</style>
+</head>
+
+<body>
+<div class="app">
+
+<div class="top">
+<span>🛡️ VPN</span>
+<button class="lang" onclick="changeLang()">
+English
+</button>
+</div>
+
+<h1>AFGHAN VPN</h1>
+<div class="logo">🛡️</div>
+
+<p id="welcome">ستاسو شخصي خوندي اتصال</p>
+
+<div class="status" id="status">
+قطع شوی
+</div>
+
+<button class="connect" id="btn"
+onclick="demoConnect()">
+وصل کېدل
+</button>
+
+<p id="serverTitle">سرور انتخاب کړئ</p>
+
+<select id="server">
+<option value="افغانستان 🇦🇫">افغانستان 🇦🇫</option>
+<option value="Germany 🇩🇪">Germany 🇩🇪</option>
+<option value="USA 🇺🇸">USA 🇺🇸</option>
+<option value="Netherlands 🇳🇱">Netherlands 🇳🇱</option>
+<option value="Turkey 🇹🇷">Turkey 🇹🇷</option>
+<option value="Singapore 🇸🇬">Singapore 🇸🇬</option>
+</select>
+
+<div class="info" id="message">
+دا د AFGHAN VPN نمونه نسخه ده
+</div>
+
+<div class="menu">
+<button onclick="showInfo('home')">🏠<br>کور</button>
+<button onclick="showInfo('servers')">🌐<br>سرورونه</button>
+<button onclick="showInfo('settings')">⚙️<br>تنظیمات</button>
+</div>
+
+</div>
+
+<script>
+let connected=false;
+let english=false;
+
+function demoConnect(){
+connected=!connected;
+
+document.getElementById("status").innerText=
+connected?"د نمونې حالت: وصل":"قطع شوی";
+
+document.getElementById("btn").innerText=
+connected?"قطع کول":"وصل کېدل";
+}
+
+function changeLang(){
+english=!english;
+
+document.documentElement.lang=
+english?"en":"ps";
+
+document.documentElement.dir=
+english?"ltr":"rtl";
+
+document.querySelector(".lang").innerText=
+english?"پښتو":"English";
+
+document.getElementById("welcome").innerText=
+english?"Your private connection":"ستاسو شخصي خوندي اتصال";
+
+document.getElementById("status").innerText=
+connected?"Demo mode: Connected":
+(english?"Disconnected":"قطع شوی");
+
+document.getElementById("btn").innerText=
+connected?(english?"Disconnect":"قطع کول"):
+(english?"Connect":"وصل کېدل");
+
+document.getElementById("serverTitle").innerText=
+english?"Select Server":"سرور انتخاب کړئ";
+
+document.getElementById("message").innerText=
+english?"AFGHAN VPN Demo Version":
+"دا د AFGHAN VPN نمونه نسخه ده";
+}
+
+function showInfo(page){
+let message=document.getElementById("message");
+
+if(page==="home"){
+message.innerText=english?"Home":"اصلي پاڼه";
+}
+if(page==="servers"){
+message.innerText=english?"Choose a server above":"پورته خپل سرور انتخاب کړئ";
+}
+if(page==="settings"){
+message.innerText=english?"VPN Settings":"د VPN تنظیمات";
+}
+}
+</script>
+
+</body>
+</html>
